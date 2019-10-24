@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, inital-scale=1">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+		<title>Hash Browns</title>
+		<style>
+			h1 {
+			font-size: 52px;
+			font-style: normal;
+			font-family: "Times New Roman";
+			}
+			p {
+			font-size: 18px	
+			font-style: normal;
+			font-family: "Times New Roman";
+			}
+			p.style {
+			background-color: #900C3F;
+			color: #FFFFFF;
+			border-radius: 5px;
+			border:2px ridge#581845";
+			}
+		</style>
+		<script>
+		function GeneratePassword(){
+			var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!./@#$%^&*"
+			var site = document.getElementById("txtWebsite").value.toString();
+			var usr = document.getElementById("txtUsrn").value;
+			var pin = document.getElementById("txtPIN").value;
+			var len = parseInt(document.getElementById("txtLEN").value, 10) + parseInt(pin, 10);
+			var passB = site + usr;
+			passB = passB.toLowerCase();
+			var passA = "";
+			var temp = "";
+			for(var i = pin; i < len; i++){
+				passA+=chars.charAt(parseInt(Math.abs(Math.sin(i*passB.charCodeAt(i%passB.length))*10000))%chars.length);
+			}			
+			document.getElementById("txtPass").value = passA;
+			var passBox = document.getElementById("txtPass");
+			passBox.select();
+			passBox.setSelectionRange(0, 99999)
+			document.execCommand("copy");
+			alert("Text Copied: " + passA);
+			}
+		</script>
+	</head>
+	<body bgcolor="#C70039">
+	<body>
+		<h1 align="center">Hash Browns</h1>
+		<p align="center">Website Name:&nbsp;<input type="text" name="txtWebsite" value="" 
+		id="txtWebsite" placeholder="Enter website name" 
+		style="background-color:#900C3F;color:#FFFFFF;border-radius: 3px;border:2px ridge#581845"></p>
+		<p align="center">Username:&nbsp;<input type="text" name="txtUsrn" value="" 
+		id="txtUsrn" placeholder="Enter username" 
+		style="background-color:#900C3F;color:#FFFFFF;border-radius: 3px;border:2px ridge#581845"></p>
+		<p align="center">PIN Number:&nbsp;<input type="number" min="0" name="txtPIN" value="0" 
+		id="txtPIN" 
+		style="background-color:#900C3F;color:#FFFFFF;border-radius: 3px;border:2px ridge#581845"></p>
+		<p align="center">Max Length:&nbsp;<input type="number" min="0" name="txtLEN" value="20" 
+		id="txtLEN" 
+		style="background-color:#900C3F;color:#FFFFFF;border-radius: 3px;border:2px ridge#581845"></p>
+		<p align="center"><button onclick="GeneratePassword()" 
+		id="genPASS" 
+		style="background-color:#900C3F;color:#FFFFFF;border:2px ridge#581845">Generate</button></p>
+		<p align="center"><input type="text" name="txtPass" value="" 
+		id="txtPass" size="30" 
+		style="background-color:#900C3F;color:#FFFFFF;border-radius: 5px;border:5px dotted#581845"></p>
+	</body>
+</html>
