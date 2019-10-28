@@ -64,10 +64,11 @@
 		id="txtUsrn" placeholder="Enter username" 
 		style="background-color:#900C3F;color:#FFFFFF;border-radius: 3px;border:2px ridge#581845"></p>
 		<p align="center">PIN Number:&nbsp;<input type="number" min="0" name="txtPIN" value="0" 
-		id="txtPIN" 
+		id="txtPIN" pattern="[0-9]"
+							  
 		style="background-color:#900C3F;color:#FFFFFF;border-radius: 3px;border:2px ridge#581845"></p>
 		<p align="center">Max Length:&nbsp;<input type="number" min="0" name="txtLEN" value="20" 
-		id="txtLEN" 
+		id="txtLEN" pattern="[0-9]" 
 		style="background-color:#900C3F;color:#FFFFFF;border-radius: 3px;border:2px ridge#581845"></p>
 		<p align="center"><button onclick="GeneratePassword()" 
 		id="genPASS" 
