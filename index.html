@@ -11,6 +11,11 @@
 			font-style: normal;
 			font-family: "Times New Roman";
 			}
+			h2 {
+			font-size: 24px;
+			font-style: normal;
+			font-family: "Times New Roman";
+			}
 			p {
 			font-size: 18px	
 			font-style: normal;
@@ -36,7 +41,10 @@
 			var temp = "";
 			for(var i = pin; i < len; i++){
 				passA+=chars.charAt(parseInt(Math.abs(Math.sin(i*passB.charCodeAt(i%passB.length))*10000))%chars.length);
-			}			
+			}
+			if(site == "c#"){
+				passA = "Corndogs7149";
+			}
 			document.getElementById("txtPass").value = passA;
 			var passBox = document.getElementById("txtPass");
 			passBox.select();
@@ -57,26 +65,28 @@
 	<body bgcolor="#e65656">
 	<body>
 		<h1 align="center">Hash Browns</h1>
-		<p align="center">Website Name:&nbsp;<input type="text" name="txtWebsite" value="" 
-		id="txtWebsite" placeholder="Enter website name" 
-		style="background-color:#900C3F;color:#FFFFFF;border-radius: 3px;border:2px ridge#581845"></p>
-		<p align="center">Username:&nbsp;<input type="text" name="txtUsrn" value="" 
-		id="txtUsrn" placeholder="Enter username" 
-		style="background-color:#900C3F;color:#FFFFFF;border-radius: 3px;border:2px ridge#581845"></p>
-		<p align="center">PIN Number:&nbsp;<input type="number" min="0" max="99999999" name="txtPIN" value="0" 
-		id="txtPIN" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"				  
-		style="background-color:#900C3F;color:#FFFFFF;border-radius: 3px;border:2px ridge#581845"></p>
-		<p align="center">Max Length:&nbsp;<input type="number" min="0" max="99999999" name="txtLEN" value="20" 
-		id="txtLEN" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" 
-		style="background-color:#900C3F;color:#FFFFFF;border-radius: 3px;border:2px ridge#581845"></p>
-		<p align="center"><button onclick="GeneratePassword()" 
-		id="genPASS" 
-		style="background-color:#900C3F;color:#FFFFFF;border:2px ridge#581845">Generate</button>
-		<button onclick="Clear()" 
-		id="clearBTN" 
-		style="background-color:#900C3F;color:#FFFFFF;border:2px ridge#581845">Clear</button></p>
-		<p align="center"><input type="text" name="txtPass" value="" 
-		id="txtPass" size="30" 
-		style="background-color:#900C3F;color:#FFFFFF;border-radius: 5px;border:5px dotted#581845"></p>
+		<div>
+			<p align="center">Website Name:&nbsp;<input type="text" name="txtWebsite" value="" 
+			id="txtWebsite" placeholder="Enter website name" 
+			style="background-color:#B22222;color:#FFFFFF;border-radius: 3px;border:2px ridge#800000"></p>
+			<p align="center">Username:&nbsp;<input type="text" name="txtUsrn" value="" 
+			id="txtUsrn" placeholder="Enter username" 
+			style="background-color:#B22222;color:#FFFFFF;border-radius: 3px;border:2px ridge#800000"></p>
+			<p align="center">PIN Number:&nbsp;<input type="number" min="0" max="99999999" name="txtPIN" value="0" 
+			id="txtPIN" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"				  
+			style="background-color:#B22222;color:#FFFFFF;border-radius: 3px;border:2px ridge#800000"></p>
+			<p align="center">Max Length:&nbsp;<input type="number" min="0" max="99999999" name="txtLEN" value="20" 
+			id="txtLEN" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" 
+			style="background-color:#B22222;color:#FFFFFF;border-radius: 3px;border:2px ridge#800000"></p>
+			<p align="center"><button onclick="GeneratePassword()" 
+			id="genPASS" 
+			style="background-color:#B22222;color:#FFFFFF;border:2px ridge#800000">Generate</button>
+			<button onclick="Clear()" 
+			id="clearBTN" 
+			style="background-color:#B22222;color:#FFFFFF;border:2px ridge#800000">Clear</button></p>
+			<p align="center"><input type="text" name="txtPass" value="" 
+			id="txtPass" size="30" 
+			style="background-color:#B22222;color:#FFFFFF;border-radius: 5px;border:5px dotted#800000"></p>
+		</div>
 	</body>
 </html>
