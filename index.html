@@ -29,35 +29,51 @@
 			}
 		</style>
 		<script>
-		function GeneratePassword(){
-			var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!./@#$%^&*"
+		function GeneratePassword() {
+			var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!./@#$%^&*";
+			var checkBox = document.getElementById("checkSC");
+			if (checkBox.checked == true){
+				chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#*";
+			}
 			var site = document.getElementById("txtWebsite").value.toString();
-			var usr = document.getElementById("txtUsrn").value;
-			var pin = document.getElementById("txtPIN").value;
-			var len = parseInt(document.getElementById("txtLEN").value, 10) + parseInt(pin, 10);
+			var usr = document.getElementById("txtUsrn").value.toString();
+			var pp = document.getElementById("txtPP").value.toString();
+			var len = parseInt(document.getElementById("txtLEN").value, 10) + PPtoNum(pp);
 			var passB = site + usr;
 			passB = passB.toLowerCase();
 			var passA = "";
 			var temp = "";
-			for(var i = pin; i < len; i++){
-				passA+=chars.charAt(parseInt(Math.abs(Math.sin(i*passB.charCodeAt(i%passB.length))*10000))%chars.length);
-			}
 			if(site == "c#"){
 				passA = "Corndogs7149";
 			}
-			document.getElementById("txtPass").value = passA;
-			var passBox = document.getElementById("txtPass");
-			passBox.select();
-			passBox.setSelectionRange(0, 99999)
-			document.execCommand("copy");
-			alert("Text Copied: " + passA);
+			else {
+				for(var i = PPtoNum(pp); i < len; i++){
+					passA+=chars.charAt(parseInt(Math.abs(Math.sin(i*passB.charCodeAt(i%passB.length))*10000))%chars.length);
+				}
 			}
+			CopyToClipboard(passA);
+			alert("Copied to Clipboard");
+		}
+		function CopyToClipboard(text) {
+			var dummy = document.createElement("textarea");
+			document.body.appendChild(dummy);
+			dummy.value = text;
+			dummy.select();
+			document.execCommand("copy");
+			document.body.removeChild(dummy);
+		}
+		function PPtoNum(pp){
+			var num = 0;
+			for (var i = 0; i < pp.length; i++){
+				num+=parseInt(pp.charCodeAt(i), 10);
+			}
+			return num;
+		}
 		function Clear(){
 			document.getElementById("txtWebsite").value="";
 			document.getElementById("txtUsrn").value="";
-			document.getElementById("txtPIN").value="0";
+			document.getElementById("txtPP").value="";
 			document.getElementById("txtLEN").value="20";
-			document.getElementById("txtPass").value="";
 			alert("Text Cleared");
 		}
 		</script>
@@ -72,21 +88,22 @@
 			<p align="center">Username:&nbsp;<input type="text" name="txtUsrn" value="" 
 			id="txtUsrn" placeholder="Enter username" 
 			style="background-color:#B22222;color:#FFFFFF;border-radius: 3px;border:2px ridge#800000"></p>
-			<p align="center">PIN Number:&nbsp;<input type="number" min="0" max="99999999" name="txtPIN" value="0" 
-			id="txtPIN" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))"				  
+			<p align="center">Passphrase:&nbsp;<input type="password" name="txtPP" value="" 
+			id="txtPP" placeholder="Enter pass phrase"
 			style="background-color:#B22222;color:#FFFFFF;border-radius: 3px;border:2px ridge#800000"></p>
-			<p align="center">Max Length:&nbsp;<input type="number" min="0" max="99999999" name="txtLEN" value="20" 
+			<p align="center">Password Length:&nbsp;<input type="number" min="0" max="99999999" name="txtLEN" value="20" 
 			id="txtLEN" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" 
 			style="background-color:#B22222;color:#FFFFFF;border-radius: 3px;border:2px ridge#800000"></p>
-			<p align="center"><button onclick="GeneratePassword()" 
+			<p align="center">
+			<button onclick="GeneratePassword()" 
 			id="genPASS" 
 			style="background-color:#B22222;color:#FFFFFF;border:2px ridge#800000">Generate</button>
 			<button onclick="Clear()" 
 			id="clearBTN" 
 			style="background-color:#B22222;color:#FFFFFF;border:2px ridge#800000">Clear</button></p>
-			<p align="center"><input type="text" name="txtPass" value="" 
-			id="txtPass" size="30" 
-			style="background-color:#B22222;color:#FFFFFF;border-radius: 5px;border:5px dotted#800000"></p>
+			<p align="center">Simple Characters:&nbsp;<input type="checkbox" name="checkSC" value="" 
+			id="checkSC" 
+			style="background-color:#B22222;color:#FFFFFF;border-radius: 3px;border:2px ridge#800000"></p>
 		</div>
 	</body>
 </html>
