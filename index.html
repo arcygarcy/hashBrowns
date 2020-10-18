@@ -76,6 +76,11 @@
 			document.getElementById("txtLEN").value="20";
 			alert("Text Cleared");
 		}
+		document.onkeypress = function (e) {
+			if (e.keyCode == 13) {
+				GeneratePassword();
+			}
+		}
 		</script>
 	</head>
 	<body bgcolor="#DC143C">
@@ -93,7 +98,8 @@
 			style="background-color:#B22222;color:#FFFFFF;border-radius: 3px;border:2px ridge#800000"></p>
 			<p align="center">Password Length:&nbsp;<input type="number" min="0" max="10000" name="txtLEN" value="20" 
 			id="txtLEN" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))" 
-			style="background-color:#B22222;color:#FFFFFF;border-radius: 3px;border:2px ridge#800000"></p>
+			style="background-color:#B22222;color:#FFFFFF;border-radius: 3px;border:2px ridge#800000"
+			onkeyup="if(parseInt(this.value)>1000){ this.value =1000; return false; }"></p>
 			<p align="center">
 			<button onclick="GeneratePassword()" 
 			id="genPASS" 
