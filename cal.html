@@ -9,7 +9,7 @@
                 document.getElementById("myDiv").innerHTML = this.responseText;
             }
         };
-        xhttp.open("GET", "https://test123.ap-south-1.amazonaws.com/dev", true);
+        xhttp.open("POST", "https://l1qlcbpoq9.execute-api.us-west-1.amazonaws.com/default/trialCal?date=Today&loca=Here", true);
         xhttp.send();
 
     }
