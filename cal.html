@@ -5,11 +5,8 @@
     function callAwsLambdaFunction() {
         var xhr = new XMLHttpRequest();
         xhr.open("POST", 'https://l1qlcbpoq9.execute-api.us-west-1.amazonaws.com/default/trialCal', true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify({
-            date: 'today',
-            loca: 'here'
-        }));
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.send('date=today&loca=here');
         console.log(xhr);
 
         document.getElementById("myDiv").innerHTML=xhr['responseText'];
