@@ -3,8 +3,13 @@
     <head>
 <script>
     function callAwsLambdaFunction() {
-        fetch('https://l1qlcbpoq9.execute-api.us-west-1.amazonaws.com/default/trialCal', {method: 'POST'})
-        .then(result=>result.json()).then(console.log);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", 'https://l1qlcbpoq9.execute-api.us-west-1.amazonaws.com/default/trialCal', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify({
+            value: value
+        }));
+        console.log(xhr);
     }
     </script>   
         <title>Hello World!</title>
