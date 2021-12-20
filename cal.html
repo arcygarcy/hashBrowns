@@ -4,7 +4,7 @@
 <script>
     function callAwsLambdaFunction() {
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", 'https://l1qlcbpoq9.execute-api.us-west-1.amazonaws.com/default/trialCal?date=today', true);
+        xhr.open("POST", 'https://l1qlcbpoq9.execute-api.us-west-1.amazonaws.com/default/trialCal', true);
         xhr.setRequestHeader('Content-Type', 'application/json');
         xhr.send(JSON.stringify({
             value: 'value'
