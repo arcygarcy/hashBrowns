@@ -14,7 +14,9 @@
         xhr.send('date=today&loca=here');
         console.log(xhr);
 
-        document.getElementById("myDiv").innerHTML=xhr.response;
+        var resp = xhr.responseText;
+        
+        document.getElementById("myDiv").innerHTML=resp;
     }
     </script>   
         <title>Hello World!</title>
