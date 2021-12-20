@@ -3,15 +3,8 @@
     <head>
 <script>
     function callAwsLambdaFunction() {
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("myDiv").innerHTML = this.responseText;
-            }
-        };
-        xhttp.open("POST", "https://l1qlcbpoq9.execute-api.us-west-1.amazonaws.com/default/trialCal?date=Today&loca=Here", true);
-        xhttp.send();
-
+        fetch('https://l1qlcbpoq9.execute-api.us-west-1.amazonaws.com/default/trialCal', {method: 'POST'})
+        .then(result=>result.json()).then(console.log);
     }
     </script>   
         <title>Hello World!</title>
