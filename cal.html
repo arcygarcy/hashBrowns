@@ -11,9 +11,9 @@
         }
         xhr.open("POST", 'https://l1qlcbpoq9.execute-api.us-west-1.amazonaws.com/default/trialCal', true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        var date = '12/10/2021';
+        var date = '12/10/2021' + ' 00:00:00';
         var loca = 'CCC';
-        xhr.send('date='+date+'&loca='+loca+' 00:00:00');
+        xhr.send('date='+date+'&loca='+loca);
         console.log(xhr);
     }
     </script>   
