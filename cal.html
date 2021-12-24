@@ -6,7 +6,6 @@
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
             if (xhr.readyState == XMLHttpRequest.DONE) {
-                alert(xhr.responseText);
                 document.getElementById("myDiv").innerHTML=xhr.responseText;
             }
         }
