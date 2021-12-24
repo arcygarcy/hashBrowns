@@ -2,6 +2,12 @@
 <html>
 <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script>
+        function setDefaultDate(){
+            document.getElementById('cal').value = new Date().toDateInputValue();   
+        }
+        function onLoad() {
+            setDefaultDate();
+        }
         function callAwsLambdaFunction() {
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {
@@ -19,7 +25,7 @@
     </script>   
     <title>Trial Cal</title>
 </head>
-    <body>
+    <body onload="onLoad()">
         <h1>Trial Calander</h1>
         <label>Trial Date:</label>
         <input type="date" id="cal"></input>
