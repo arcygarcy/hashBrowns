@@ -13,8 +13,6 @@
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             var date = document.getElementById("cal").value + ' 00:00:00';
             var loca = document.getElementById("loca").value;
-            alert(date);
-            alert(loca);
             xhr.send('date='+date+'&loca='+loca);
             console.log(xhr);
         }
