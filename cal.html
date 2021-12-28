@@ -12,7 +12,7 @@
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == XMLHttpRequest.DONE) {
-                    document.getElementById("myDiv").innerHTML=xhr.responseText;
+                    document.getElementById("myDiv").innerHTML=xhr.responseText.replaceAll('**', '\n');
                 }
             }
             xhr.open("POST", 'https://l1qlcbpoq9.execute-api.us-west-1.amazonaws.com/default/trialCal', true);
